@@ -9,12 +9,12 @@ package view;
  *
  * @author u08649973108
  */
-public class jDlgProduto extends javax.swing.JPanel {
+public class JDlgProduto extends javax.swing.JPanel {
 
     /**
      * Creates new form jDlgProduto
      */
-    public jDlgProduto() {
+    public JDlgProduto() {
         initComponents();
     }
 
