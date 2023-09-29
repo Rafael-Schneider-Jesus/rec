@@ -5,7 +5,10 @@
  */
 package dao;
 
+import bean.RsUsuarios;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -13,9 +16,10 @@ import java.util.List;
  */
 public class UsuariosDAO extends DAO_Abstract{
 
-    @Override
+@Override
     public void insert(Object object) {
         session.beginTransaction();
+        session.update(object);
         session.save(object);
         session.getTransaction().commit();
     }
@@ -40,12 +44,22 @@ public class UsuariosDAO extends DAO_Abstract{
 
     @Override
     public Object list(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(RsUsuarios.class);
+        criteria.add(Restrictions.eq("rsIdusuarios", id));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista.get(0);
+
     }
 
     @Override
     public List listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(RsUsuarios.class);
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
     }
-    
 }
