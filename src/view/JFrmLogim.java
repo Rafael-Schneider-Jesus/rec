@@ -159,7 +159,7 @@ String senha;
        pass = JTxtUsuario.getText().trim();
      senha = jPwfSenha.getText().trim();
       
-     usuarios = (Usuarios) usuariosDAO.login(pass, senha);
+ //    usuarios = (Usuarios) usuariosDAO.login(pass, senha);
     
        
 //        if(Cont<3){ 
