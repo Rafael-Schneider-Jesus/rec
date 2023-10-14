@@ -6,6 +6,8 @@
 package view;
 
 import static tools.Util.habilitar;
+import viewPesquisa.JDlgClienteP;
+import viewPesquisa.JDlgVendedorP;
 
 /**
  *
@@ -227,6 +229,8 @@ public class JDlgProduto extends javax.swing.JPanel {
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
        // viewPesquisa.JDlgProduto.setVisible(true);
+        JDlgClienteP jDlgClienteP = new JDlgClienteP();
+        jDlgClienteP.setVisible(true);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
 

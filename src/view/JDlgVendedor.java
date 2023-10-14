@@ -5,6 +5,8 @@
  */
 package view;
 
+import viewPesquisa.JDlgVendedorP;
+
 /**
  *
  * @author dell
@@ -82,6 +84,11 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
         jBtnpesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
         jBtnpesquisar.setText("pesquisar");
+        jBtnpesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnpesquisarActionPerformed(evt);
+            }
+        });
 
         jBtnComfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
         jBtnComfirmar.setText("comfimar");
@@ -206,6 +213,12 @@ public class JDlgVendedor extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed
+        // TODO add your handling code here:
+        JDlgVendedorP jDlgVendedorP = new JDlgVendedorP();
+        jDlgVendedorP.setVisible(true);
+    }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
     /**
      * @param args the command line arguments
