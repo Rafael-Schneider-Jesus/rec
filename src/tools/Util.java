@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package tools;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
@@ -24,12 +26,18 @@ public class Util {
         }
     }
     
-    public static void limp(JComponent ... vetCamp) {
-        for (int i = 0; i < vetCamp.length; i++) {
-            
-            
-           ((JTextField) vetCamp[i]).setText("");
-            
+    public static void limp(JComponent ... vetComp) {
+        for (JComponent componente : vetComp) {
+            if (componente instanceof JTextField) {
+                JTextField objeto = (JTextField) componente;
+                objeto.setText("");
+            } else if (componente instanceof JComboBox) {
+                JComboBox objeto = (JComboBox) componente;
+                objeto.setSelectedItem(-1);
+            } else if (componente instanceof JCheckBox) {
+                JCheckBox objeto = (JCheckBox) componente;
+                objeto.setSelected(false);
+            }
         }
     }
     public static void msg( String mensagem) {
@@ -56,11 +64,19 @@ public class Util {
       public static String doubleStr(String num) {
         return "";
     }
-      public static Date strData(String cad) {
-        return null;
+    public static java.util.Date strDate(String car) {
+            try {
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                return formato.parse(car);
+            } catch (ParseException ex) {
+                System.out.println("Houve uma falha em sua conversão de data");
+            }
+            return null;
     }
-      public static String dataStr(String data) {
-        return "";
+
+    public static String dateStr(java.util.Date cad) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(cad);
     }
 
     public static void habilitar(JTextField jtxtsabor, JTextField jtxtCodigo, JComboBox<String> jCbocopo, JComboBox<String> jCbotamanho, boolean b) {

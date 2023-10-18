@@ -1,43 +1,45 @@
-package view.pesquisar;
-
-import view.controle.UsuarioControle;
-import bean.Usuarios;
-import dao.UsuariosDAO;
-import java.util.List;
-import view.JDlgUsuarios;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package viewPesquisa;
+
+
+
+import bean.RsUsuarios;
+import dao.UsuariosDAO;
+import java.util.List;
+import view.JDlgUsuarios;
+import viewControle.UsuariosController;
 
 /**
  *
- * @author u13766540670
+ * @author u04127224290
  */
-public class JDLgUsuarios_pesquisar extends javax.swing.JDialog {
+public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
-    
-     private JDlgUsuarios jDlgUsuarios;
-     UsuarioControle usuarioControle;
+    private JDlgUsuarios jDlgUsuarios;
+    UsuariosController usuariosController;
     /**
-     * Creates new form JDLgUsuarios_pesquisar
+     * Creates new form JDlgUsuariosPesquisar
      */
-    public JDLgUsuarios_pesquisar(java.awt.Frame parent, boolean modal) {
+    public JDlgUsuariosPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         usuarioControle = new  UsuarioControle();
+        setLocationRelativeTo(null);
+        setTitle("Consulta de Usuarios");
+        usuariosController = new UsuariosController();
         UsuariosDAO usuariosDAO = new UsuariosDAO();
         List lista = usuariosDAO.listAll();
-        usuarioControle.setList(lista);
-        jTable1.setModel(usuarioControle);
+        usuariosController.setList(lista);
+        jTable1.setModel(usuariosController);                
+    }
+    
+    public void setTelaAnterior(JDlgUsuarios jDlgUsuarios) {
+        this.jDlgUsuarios = jDlgUsuarios;
     }
 
-    public  void  setTelaAnterior(JDlgUsuarios jDlgUsuarios){
-    this.jDlgUsuarios  = jDlgUsuarios;
-    }
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,28 +49,12 @@ public class JDLgUsuarios_pesquisar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBtnConfirmar = new javax.swing.JButton();
-        jBtnCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jBtnOk = new javax.swing.JButton();
+        jBtnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ok_1.png"))); // NOI18N
-        jBtnConfirmar.setText("Confirmar");
-        jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnConfirmarActionPerformed(evt);
-            }
-        });
-
-        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
-        jBtnCancelar.setText("Cancelar");
-        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCancelarActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,47 +69,59 @@ public class JDLgUsuarios_pesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Confirmado.png"))); // NOI18N
+        jBtnOk.setText("OK");
+        jBtnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnOkActionPerformed(evt);
+            }
+        });
+
+        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(608, Short.MAX_VALUE)
-                .addComponent(jBtnConfirmar)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnOk)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnCancelar)
-                .addContainerGap())
-            .addComponent(jScrollPane1)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnConfirmar)
-                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jBtnOk)
+                    .addComponent(jBtnCancelar))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+    private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-       int rowsel = jTable1.getSelectedRow();
-       
-       Usuarios usuarios = usuarioControle.getbean(rowsel);
-       jDlgUsuarios.beanviaw(usuarios);
-       
-       
-       
+        int rowSel = jTable1.getSelectedRow();
+        RsUsuarios usuarios = usuariosController.getBean(rowSel);
+        jDlgUsuarios.beanView(usuarios);
         setVisible(false);
-    }//GEN-LAST:event_jBtnConfirmarActionPerformed
+    }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-          setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
@@ -143,20 +141,27 @@ public class JDLgUsuarios_pesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDLgUsuarios_pesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDLgUsuarios_pesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDLgUsuarios_pesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDLgUsuarios_pesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgUsuariosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDLgUsuarios_pesquisar dialog = new JDLgUsuarios_pesquisar(new javax.swing.JFrame(), true);
+                JDlgUsuariosPesquisar dialog = new JDlgUsuariosPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -170,7 +175,7 @@ public class JDLgUsuarios_pesquisar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnConfirmar;
+    private javax.swing.JButton jBtnOk;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

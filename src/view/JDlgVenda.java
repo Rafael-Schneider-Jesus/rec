@@ -5,12 +5,16 @@
  */
 package view;
 
+import bean.RsVenda;
+import bean.RsVendedor;
+import tools.Util;
+
 /**
  *
  * @author dell
  */
 public class JDlgVenda extends javax.swing.JDialog {
-
+boolean incluindo;
     /**
      * Creates new form JDlgVenda
      */
@@ -22,6 +26,23 @@ public class JDlgVenda extends javax.swing.JDialog {
     JDlgVenda() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+                public RsVenda viewBean() {
+        RsVenda venda = new RsVenda(); // criou o bean
+        
+        venda.setRsIdvenda(Util.strInt(jTxtCodigo.getText()));
+        venda.setRsVendedor(jTxtVendedor.getText() );
+     venda.setRsTotal(Util.strInt(jTxtTotal.getText()));
+     venda.setRsFormaPagamento(Util.intStr(jCboForma.getSelectedIndex()));
+            return venda;
+    };
+    
+     public void beanView(RsVenda venda) {
+        jTxtCodigo.setText(Util.intStr(venda.getRsIdvenda()));
+     jTxtTotal.setText(Util.intStr(venda.getRsTotal()));
+        jTxtVendedor.setText(venda.getRsVendedor());
+     jCboForma.setSelectedIndex(Util.strInt(venda.getRsFormaPagamento()));
+     
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.

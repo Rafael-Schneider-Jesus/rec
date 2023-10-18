@@ -5,6 +5,8 @@
  */
 package view;
 
+import bean.RsProduto;
+import tools.Util;
 import static tools.Util.habilitar;
 import viewPesquisa.JDlgClienteP;
 import viewPesquisa.JDlgVendedorP;
@@ -14,6 +16,7 @@ import viewPesquisa.JDlgVendedorP;
  * @author u08649973108
  */
 public class JDlgProduto extends javax.swing.JPanel {
+       boolean incluindo;
 
     /**
      * Creates new form jDlgProduto
@@ -23,6 +26,26 @@ public class JDlgProduto extends javax.swing.JPanel {
         initComponents();
         jDlgProduto = new JDlgProduto();
     }
+        public RsProduto viewBean() {
+        RsProduto produto = new RsProduto(); // criou o bean
+        
+        produto.setRsIdProduto(Util.strInt(jtxtCodigo.getText()));
+        produto.setRsSabor(jtxtsabor.getText() );
+        produto.setRsCopoOuCasquinha(jCbocopo.getSelectedIndex());
+        produto.setRsTamanho(jCbotamanho.getSelectedIndex());
+        
+     
+        
+        return produto;
+    };
+    
+     public void beanView(RsProduto Produto) {
+        jtxtCodigo.setText( Util.intStr(Produto.getRsIdProduto()) ); // AQUI
+        jtxtsabor.setText(Produto.getRsSabor());
+        jCbocopo.setSelectedIndex(Produto.getRsCopoOuCasquinha());
+        jCbotamanho.setSelectedIndex(Produto.getRsTamanho());
+     
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.

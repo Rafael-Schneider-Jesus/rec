@@ -10,7 +10,7 @@ package view;
  * @author dell
  */
 public class JDlgvendaIA extends javax.swing.JDialog {
-
+boolean incluindo;
     /**
      * Creates new form JDlgvendaIA
      */

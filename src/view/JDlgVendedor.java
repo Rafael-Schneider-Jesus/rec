@@ -5,6 +5,8 @@
  */
 package view;
 
+import bean.RsVendedor;
+import tools.Util;
 import viewPesquisa.JDlgVendedorP;
 
 /**
@@ -12,7 +14,7 @@ import viewPesquisa.JDlgVendedorP;
  * @author dell
  */
 public class JDlgVendedor extends javax.swing.JDialog {
-
+boolean incluindo;
     /**
      * Creates new form JDlgVendedor
      */
@@ -24,6 +26,34 @@ public class JDlgVendedor extends javax.swing.JDialog {
     JDlgVendedor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+            public RsVendedor viewBean() {
+        RsVendedor vendedor = new RsVendedor(); // criou o bean
+        
+        vendedor.setRsIdvendedor(Util.strInt(jTxtCodigo.getText()));
+        vendedor.setRsNome(jTxtNome.getText() );
+        vendedor.setRsSobrenome(jTxtSobre.getText() );
+        vendedor.setRsTelefone(jTelefone.getText() );
+        vendedor.setRsLogin(jSenha.getText() );
+        vendedor.setRsCpf(jCpf.getText() );
+        vendedor.setRsDataNascimento(Util.strDate(jDataNa.getText()));
+        vendedor.setRsFuncao(jcboFuncao.getSelectedIndex());
+        
+        
+     
+        
+        return vendedor;
+    };
+    
+     public void beanView(RsVendedor vendedor) {
+        jTxtCodigo.setText(Util.intStr(vendedor.getRsIdvendedor()));
+        jTxtNome.setText(vendedor.getRsNome());
+        jTxtSobre.setText(vendedor.getRsSobrenome());
+        jCpf.setText(vendedor.getRsCpf());
+        jDataNa.setText(Util.dateStr(vendedor.getRsDataNascimento()));
+        jSenha.setText(vendedor.getRsLogin());
+        jcboFuncao.setSelectedIndex(vendedor.getRsFuncao());
+     
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
