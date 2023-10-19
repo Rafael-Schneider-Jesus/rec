@@ -6,6 +6,7 @@
 package viewPesquisa;
 
 import bean.RsVendedor;
+import view.JDlgVendedor;
 import viewControle.VendedorController;
 
 /**
@@ -105,7 +106,7 @@ public class JDlgVendedorP extends javax.swing.JDialog {
         // TODO add your handling code here:
        int rowSel = jTable1.getSelectedRow();
         RsVendedor rsVendedor = VendedorController.getbean(rowSel);
-        JDlgVendedors.beanView(rsVendedor);
+        JDlgVendedor.beanView(rsVendedor);
         setVisible(false);
     }//GEN-LAST:event_jbtnOkActionPerformed
 

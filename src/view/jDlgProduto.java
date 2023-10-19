@@ -5,7 +5,10 @@
  */
 package view;
 
+import bean.RsCliente;
 import bean.RsProduto;
+import dao.ClienteDAO;
+import dao.ProdutoDAO;
 import tools.Util;
 import static tools.Util.habilitar;
 import viewPesquisa.JDlgClienteP;
@@ -227,27 +230,64 @@ public class JDlgProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_jtxtsaborActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        tools.Util.habilitar(jtxtsabor, jtxtCodigo, jCbocopo, jCbotamanho, true);
+                Util.habilitar(true, jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho,  jBtnCancelar, jBtnComfirmar);
+         
+         Util.habilitar(false, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+         
+        incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
         // TODO add your handling code here:
-        tools.Util.habilitar(jtxtsabor, jtxtCodigo, jCbocopo, jCbotamanho, false);
+               if ((Util.perguntar("Deseja excluir o registro?") == true)){
+            RsProduto produto = viewBean();
+                   ProdutoDAO produtoDAO = new ProdutoDAO();
+            produtoDAO.delete(produto);
+            Util.msg("Exclusão realizada com sucesso");
+        } else {
+            Util.msg("Exclusão cancelada com sucesso");
+        }      
+        Util.limp(jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
         // TODO add your handling code here:
-        tools.Util.habilitar(jtxtsabor, jtxtCodigo, jCbocopo, jCbotamanho, false);
+                if (incluindo == true) {
+                RsProduto produto = viewBean();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        produtoDAO.insert(produto);
+        }else{
+           RsProduto produto = viewBean(); 
+        ProdutoDAO produtoDAO = new ProdutoDAO();;
+        produtoDAO.update(produto);
+        }
+        
+         Util.habilitar(false, jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho, jBtnCancelar, jBtnComfirmar);
+             
+         Util.habilitar(true, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+         
+        Util.limp(jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho);
     }//GEN-LAST:event_jBtnComfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        tools.Util.habilitar(jtxtsabor, jtxtCodigo, jCbocopo, jCbotamanho, false);
+            Util.habilitar(false, jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho,  jBtnCancelar, jBtnComfirmar);
+       
+        Util.habilitar(false, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+       
+         Util.limp(jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho);
+        Util.msg("Operação Cancelada");
+
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        tools.Util.habilitar(jtxtsabor, jtxtCodigo, jCbocopo, jCbotamanho, true);
+              Util.habilitar(true, jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho,  jBtnCancelar, jBtnComfirmar);
+        
+        Util.habilitar(false, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+        
+           Util.limp(jtxtCodigo, jCbocopo, jtxtsabor, jCbotamanho);
+        incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnpesquisarActionPerformed

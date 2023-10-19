@@ -6,6 +6,7 @@
 package view;
 
 import bean.RsCliente;
+import dao.ClienteDAO;
 import tools.Util;
 
 /**
@@ -157,6 +158,11 @@ boolean incluindo;
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
         jBtnAlterar.setText("alterar");
+        jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAlterarActionPerformed(evt);
+            }
+        });
 
         jBtnpesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
         jBtnpesquisar.setText("pesquisar");
@@ -168,15 +174,35 @@ boolean incluindo;
 
         jBtnComfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
         jBtnComfirmar.setText("comfimar");
+        jBtnComfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnComfirmarActionPerformed(evt);
+            }
+        });
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
 
         jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
         jBtnIncluir.setText("incluir");
+        jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIncluirActionPerformed(evt);
+            }
+        });
 
         jbtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
         jbtnExcluir.setText("Excluir");
+        jbtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -360,6 +386,75 @@ boolean incluindo;
         
         
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        // TODO add your handling code here:
+               Util.habilitar(false,jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+       
+       Util.habilitar(true, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+       
+        Util.limp(jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero);
+        Util.msg("Operação Cancelada");
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+        // TODO add your handling code here:
+                Util.habilitar(true, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+        
+        Util.habilitar(false, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+        
+    Util.limp(jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero);
+        incluindo = true;
+    }//GEN-LAST:event_jBtnIncluirActionPerformed
+
+    private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
+        // TODO add your handling code here:
+                 Util.habilitar(true, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+         
+         Util.habilitar(false, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+         
+        incluindo = false;
+    }//GEN-LAST:event_jBtnAlterarActionPerformed
+
+    private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
+        // TODO add your handling code here:
+               if ((Util.perguntar("Deseja excluir o registro?") == true)){
+            RsCliente cliente = viewBean();
+            ClienteDAO clienteDAO = new ClienteDAO();
+            clienteDAO.delete(cliente);
+            Util.msg("Exclusão realizada com sucesso");
+        } else {
+            Util.msg("Exclusão cancelada com sucesso");
+        }      
+    Util.limp(jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero);
+    }//GEN-LAST:event_jbtnExcluirActionPerformed
+
+    private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
+        // TODO add your handling code here:
+                if (incluindo == true) {
+             RsCliente cliente = viewBean();
+            ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.insert(cliente);
+        }else{
+             RsCliente cliente = viewBean();
+            ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.update(cliente);
+        }
+        
+         Util.habilitar(false, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+             
+         Util.habilitar(true, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
+         
+     Util.limp(jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero);
+    }//GEN-LAST:event_jBtnComfirmarActionPerformed
 
     /**
      * @param args the command line arguments
