@@ -57,7 +57,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         
         usuarios.setRsIdusuarios(Util.strInt(jTxtCodigo.getText()));
         usuarios.setRsApelido(jTxtApelido.getText());
-        usuarios.setRsAtivo(jChbAtivo.isSelected() == true ? "Sim" : "Não");
+   //     usuarios.setRsAtivo(jChbAtivo.isSelected() == true ? "Sim" : "Não");
         usuarios.setRsCpf(jFmtCpf.getText());
         usuarios.setRsNasc(Util.strDate(jFmtData.getText()));
         usuarios.setRsNivel(jCboNivel.getSelectedIndex());

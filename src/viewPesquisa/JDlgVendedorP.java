@@ -105,8 +105,8 @@ public class JDlgVendedorP extends javax.swing.JDialog {
     private void jbtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOkActionPerformed
         // TODO add your handling code here:
        int rowSel = jTable1.getSelectedRow();
-        RsVendedor rsVendedor = VendedorController.getbean(rowSel);
-        JDlgVendedor.beanView(rsVendedor);
+   //     RsVendedor rsVendedor = VendedorController.getbean(rowSel);
+     //   JDlgVendedor.beanView(rsVendedor);
         setVisible(false);
     }//GEN-LAST:event_jbtnOkActionPerformed
 
