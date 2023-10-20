@@ -22,10 +22,10 @@ public class VendaController extends AbstractTableModel{
         this.lista = lista;
         this.fireTableDataChanged();
     }
+public RsVenda getbean(int linha){
+return (RsVenda) lista.get(linha);
+}
    
-    public RsVenda getBean(int row) {
-        return (RsVenda) lista.get(row);
-    }
     
     @Override
     public int getRowCount() {

@@ -73,7 +73,6 @@ public class JFrmLogin extends javax.swing.JFrame {
 
         jLabel3.setText("usuario");
 
-        jBtnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ok_1.png"))); // NOI18N
         jBtnEntrar.setText("Entrar");
         jBtnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +80,6 @@ public class JFrmLogin extends javax.swing.JFrame {
             }
         });
 
-        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +100,7 @@ public class JFrmLogin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtnEntrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                                 .addComponent(jBtnCancelar))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,9 +154,9 @@ public class JFrmLogin extends javax.swing.JFrame {
 String pass;
 String senha;
         
-        UsuariosDAO usuariosDAO = new UsuariosDAO();
-       RsUsuarios rsusuarios = new RsUsuarios();
-       pass = JTxtUsuario.getText().trim();
+     UsuariosDAO usuariosDAO = new UsuariosDAO();
+     RsUsuarios rsusuarios = new RsUsuarios();
+     pass = JTxtUsuario.getText().trim();
      senha = jPwfSenha.getText().trim();
       
 

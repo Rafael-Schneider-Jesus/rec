@@ -5,7 +5,13 @@
  */
 package view;
 
+import bean.RsVenda;
+import dao.VendaDAO;
+import dao.VendedorDAO;
+import java.util.List;
 import tools.Util;
+import viewControle.VendaController;
+import viewControle.VendedorController;
 
 /**
  *
@@ -13,7 +19,13 @@ import tools.Util;
  */
 public class JDlgvendaIA extends javax.swing.JDialog {
 boolean incluindo;
+
+ JDlgvendaIA jDlgvendaIA;
+  VendaDAO vendaDAO;
+    RsVenda venda;
+    VendaController vendaController;
     /**
+     * 
      * Creates new form JDlgvendaIA
      */
     public JDlgvendaIA(java.awt.Frame parent, boolean modal) {
@@ -136,19 +148,32 @@ boolean incluindo;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-
+        jDlgvendaIA.setTitle("Inclusão");
+        jDlgvendaIA.setVisible(true);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+       if( Util.perguntar("Você deseja alterar?")== true){
+       this.dispose();
+       jDlgvendaIA.setVisible(true);
+       jDlgvendaIA.setTitle("Alteração");
+        }
 
 
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        // TODO add your handling code here:
-
-     
+            if ((Util.perguntar("Excluir?")) == true) {
+            int sel = jTable1.getSelectedRow();
+      // venda = VendaController.getbean(sel);
+         vendaDAO.delete(venda);
+      // Altera os registro da jtable;
+         List lista = vendaDAO.listAll();
+      // VendaController.setList(lista);
+        } else
+        {
+           Util.msg("Exclusão cancelada");    
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     /**

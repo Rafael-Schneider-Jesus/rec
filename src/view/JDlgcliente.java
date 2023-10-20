@@ -44,6 +44,7 @@ boolean incluindo;
         cliente.setRsEmail(jTxtEmail.getText());
         cliente.setRsCidade(jTxtCidade.getText());
         cliente.setRsProfissao(jTxtprof.getText());
+        cliente.setRsEndereco(jTxtendereco.getText());
         cliente.setRsRendaAnual(Util.strInt(jTxtRenda.getText()));
         cliente.setRsNumeroDependentes((jTxtnumero.getText()));
         return cliente;
@@ -52,6 +53,7 @@ boolean incluindo;
      public void beanView(RsCliente cliente) {
         jTxtId.setText(Util.intStr(cliente.getRsIdcliente()));
         jTxtSobre.setText(cliente.getRsSobrenome());
+        jTxtendereco.setText(cliente.getRsEndereco());
         jTxtCep.setText(cliente.getRsCep());
         jFmtCadastro.setText(Util.dateStr(cliente.getRsDataCadastro()));
         jFmtnasc.setText(Util.dateStr(cliente.getRsDataNascimento()));
@@ -122,9 +124,9 @@ boolean incluindo;
             }
         });
 
-        jCboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
 
-        jCboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "solteiro", "Casado" }));
 
         jLabel1.setText("codigo");
 
@@ -156,7 +158,6 @@ boolean incluindo;
 
         jLabel17.setText("data cadastro ");
 
-        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
         jBtnAlterar.setText("alterar");
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +165,6 @@ boolean incluindo;
             }
         });
 
-        jBtnpesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
         jBtnpesquisar.setText("pesquisar");
         jBtnpesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +172,6 @@ boolean incluindo;
             }
         });
 
-        jBtnComfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
         jBtnComfirmar.setText("comfimar");
         jBtnComfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +179,6 @@ boolean incluindo;
             }
         });
 
-        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,7 +186,6 @@ boolean incluindo;
             }
         });
 
-        jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
         jBtnIncluir.setText("incluir");
         jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +193,6 @@ boolean incluindo;
             }
         });
 
-        jbtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
         jbtnExcluir.setText("Excluir");
         jbtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -371,7 +367,7 @@ boolean incluindo;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnComfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnIncluir))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         pack();
@@ -390,7 +386,7 @@ boolean incluindo;
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
                Util.habilitar(false,jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
-             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar, jTxtendereco);
        
        Util.habilitar(true, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
        
@@ -402,19 +398,19 @@ boolean incluindo;
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
                 Util.habilitar(true, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
-             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar, jTxtendereco);
         
         Util.habilitar(false, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
         
     Util.limp(jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
-             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero);
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero, jTxtendereco);
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
                  Util.habilitar(true, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
-             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar, jTxtendereco);
          
          Util.habilitar(false, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
          
@@ -432,7 +428,7 @@ boolean incluindo;
             Util.msg("Exclusão cancelada com sucesso");
         }      
     Util.limp(jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
-             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero);
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero, jTxtendereco);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jBtnComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnComfirmarActionPerformed
@@ -448,12 +444,12 @@ boolean incluindo;
         }
         
          Util.habilitar(false, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
-             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar);
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar, jTxtendereco);
              
          Util.habilitar(true, jBtnAlterar, jbtnExcluir, jBtnIncluir, jBtnpesquisar);
          
      Util.limp(jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
-             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero);
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero, jTxtendereco);
     }//GEN-LAST:event_jBtnComfirmarActionPerformed
 
     /**

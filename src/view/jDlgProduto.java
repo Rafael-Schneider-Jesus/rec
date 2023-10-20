@@ -9,6 +9,8 @@ import bean.RsCliente;
 import bean.RsProduto;
 import dao.ClienteDAO;
 import dao.ProdutoDAO;
+import java.awt.event.WindowAdapter;
+import javax.swing.JFrame;
 import tools.Util;
 import static tools.Util.habilitar;
 import viewPesquisa.JDlgClienteP;
@@ -29,8 +31,12 @@ public class JDlgProduto extends javax.swing.JPanel {
         initComponents();
         jDlgProduto = new JDlgProduto();
     }
+
+    JDlgProduto(JFrame jFrame, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
         public RsProduto viewBean() {
-        RsProduto produto = new RsProduto(); // criou o bean
+        RsProduto produto = new RsProduto();
         
         produto.setRsIdProduto(Util.strInt(jtxtCodigo.getText()));
         produto.setRsSabor(jtxtsabor.getText() );
@@ -49,6 +55,7 @@ public class JDlgProduto extends javax.swing.JPanel {
         jCbotamanho.setSelectedIndex(Produto.getRsTamanho());
      
     };
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,9 +88,14 @@ public class JDlgProduto extends javax.swing.JPanel {
 
         jLabel4.setText("tamanho");
 
-        jCbocopo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbocopo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Copo", "casquinha" }));
+        jCbocopo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbocopoActionPerformed(evt);
+            }
+        });
 
-        jCbotamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbotamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "G", "P" }));
 
         jLabel5.setText("sabor");
 
@@ -99,7 +111,6 @@ public class JDlgProduto extends javax.swing.JPanel {
             }
         });
 
-        jbtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Excluir.png"))); // NOI18N
         jbtnExcluir.setText("Excluir");
         jbtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +118,6 @@ public class JDlgProduto extends javax.swing.JPanel {
             }
         });
 
-        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
         jBtnAlterar.setText("alterar");
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +125,6 @@ public class JDlgProduto extends javax.swing.JPanel {
             }
         });
 
-        jBtnpesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
         jBtnpesquisar.setText("pesquisar");
         jBtnpesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +132,6 @@ public class JDlgProduto extends javax.swing.JPanel {
             }
         });
 
-        jBtnComfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
         jBtnComfirmar.setText("comfimar");
         jBtnComfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +139,6 @@ public class JDlgProduto extends javax.swing.JPanel {
             }
         });
 
-        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +146,6 @@ public class JDlgProduto extends javax.swing.JPanel {
             }
         });
 
-        jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
         jBtnIncluir.setText("incluir");
         jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +182,7 @@ public class JDlgProduto extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtxtsabor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)))
@@ -296,6 +302,49 @@ public class JDlgProduto extends javax.swing.JPanel {
         jDlgClienteP.setVisible(true);
     }//GEN-LAST:event_jBtnpesquisarActionPerformed
 
+    private void jCbocopoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbocopoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCbocopoActionPerformed
+ public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(JDlgUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JDlgUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JDlgUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JDlgUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JDlgProduto dialog = new JDlgProduto(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAlterar;
@@ -314,4 +363,8 @@ public class JDlgProduto extends javax.swing.JPanel {
     private javax.swing.JTextField jtxtCodigo;
     private javax.swing.JTextField jtxtsabor;
     // End of variables declaration//GEN-END:variables
+
+    private void addWindowListener(WindowAdapter windowAdapter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

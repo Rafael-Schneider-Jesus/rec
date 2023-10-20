@@ -235,7 +235,7 @@
                   <Component id="jBtnComfirmar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jBtnIncluir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <EmptySpace pref="86" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -267,11 +267,9 @@
     <Component class="javax.swing.JComboBox" name="jCboGenero">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="2">
+            <StringItem index="0" value="M"/>
+            <StringItem index="1" value="F"/>
           </StringArray>
         </Property>
       </Properties>
@@ -284,11 +282,9 @@
     <Component class="javax.swing.JComboBox" name="jCboEstado">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="2">
+            <StringItem index="0" value="solteiro"/>
+            <StringItem index="1" value="Casado"/>
           </StringArray>
         </Property>
       </Properties>
@@ -379,9 +375,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBtnAlterar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/alterar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="alterar"/>
       </Properties>
       <Events>
@@ -390,9 +383,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBtnpesquisar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/pesquisar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="pesquisar"/>
       </Properties>
       <Events>
@@ -401,9 +391,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBtnComfirmar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/confirmar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="comfimar"/>
       </Properties>
       <Events>
@@ -412,9 +399,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBtnCancelar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/cancelar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="cancelar"/>
       </Properties>
       <Events>
@@ -423,9 +407,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBtnIncluir">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/incluir.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="incluir"/>
       </Properties>
       <Events>
@@ -434,9 +415,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbtnExcluir">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/Excluir.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
       <Events>
