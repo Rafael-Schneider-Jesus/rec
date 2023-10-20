@@ -16,6 +16,9 @@ import org.hibernate.criterion.Restrictions;
  * @author u08649973108
  */
 public class LoginDAO extends DAO_Abstract{
+    
+    public LoginDAO(){
+    }
 
 @Override
     public void insert(Object object) {

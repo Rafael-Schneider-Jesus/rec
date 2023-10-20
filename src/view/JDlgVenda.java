@@ -21,6 +21,8 @@ boolean incluindo;
     public JDlgVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("venda");
+        setLocationRelativeTo(null);
     }
 
     JDlgVenda() {

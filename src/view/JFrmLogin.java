@@ -9,6 +9,7 @@ package view;
 
 import bean.RsUsuarios;
 import dao.UsuariosDAO;
+import tools.Util;
 import javax.swing.JOptionPane;
 
 
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
 public class JFrmLogin extends javax.swing.JFrame {
  
  int Cont;
+ int ten;
  
  
     /**
@@ -30,6 +32,23 @@ public class JFrmLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         //
+    }
+    
+    public void login(){
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        while (ten < 5) {
+            if (usuariosDAO.buscar("rsApelido", JTxtUsuario.getText()).size() != 0
+            && usuariosDAO.buscar("rsSenha", jPwfSenha.getText()).size() != 0){
+                JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
+                jFrmPrincipal.setVisible(true);
+                break;
+            } else {
+                tools.Util.msg("N");
+                ten++;
+                break;
+            }       
+        }
+        this.dispose();
     }
  
     /**
@@ -130,10 +149,10 @@ public class JFrmLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JTxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPwfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnEntrar)
-                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBtnCancelar))
                 .addContainerGap())
         );
 

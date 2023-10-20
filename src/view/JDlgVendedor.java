@@ -22,6 +22,9 @@ boolean incluindo;
     public JDlgVendedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+          Util.habilitar(false,jTxtCodigo, jTxtNome, jTxtSobre,jCpf,jDataNa,jSenha,jcboFuncao, jBtnCancelar, jBtnComfirmar);
+          setTitle("Vendedor");
+          setLocationRelativeTo(null);
     }
 
     JDlgVendedor() {

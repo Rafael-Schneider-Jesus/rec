@@ -47,11 +47,11 @@ Contributor(s):
     <property name="hibernate.connection.username">rafael_schneider</property>
     <property name="hibernate.connection.password">rafael_schneider</property>
     <mapping class="bean.RsVendedor"/>
-    <mapping class="bean.RsUsuarios"/>
-    <mapping class="bean.RsCliente"/>
     <mapping class="bean.RsVendaProduto"/>
     <mapping class="bean.RsProduto"/>
+    <mapping class="bean.RsUsuarios"/>
     <mapping class="bean.RsVenda"/>
+    <mapping class="bean.RsCliente"/>
     <mapping class="bean.RsLogin"/>
   </session-factory>
 </hibernate-configuration>

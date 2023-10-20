@@ -19,7 +19,10 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         initComponents();
         setTitle("Sorveteria");
         setExtendedState(MAXIMIZED_BOTH);
+       
     }
+       
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -283,7 +286,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         JDlgProduto jDlgProduto = new JDlgProduto(this, true);
-        jDlgProduto.setVisible(true);
+       jDlgProduto.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -305,8 +308,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jBtnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnProdutoActionPerformed
         // TODO add your handling code here:
-               JDlgProduto jDlgProduto = new JDlgProduto(this, true);
-        jDlgProduto.setVisible(true);
+          JDlgProduto jDlgProduto = new JDlgProduto(this, true);
+          jDlgProduto.setVisible(true);
     }//GEN-LAST:event_jBtnProdutoActionPerformed
 
     private void jBtnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUsuariosActionPerformed
@@ -362,7 +365,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrmPrincipal().setVisible(true);
+                new JFrmLogin().setVisible(true);
             }
         });
     }

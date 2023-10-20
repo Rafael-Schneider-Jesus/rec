@@ -21,6 +21,10 @@ boolean incluindo;
     public JDlgcliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+            Util.habilitar(false, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
+             jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar, jTxtendereco);
+            setTitle("Cliente");
+            setLocationRelativeTo(null);
     }
 
     JDlgcliente() {
@@ -442,6 +446,7 @@ boolean incluindo;
             ClienteDAO clienteDAO = new ClienteDAO();
         clienteDAO.update(cliente);
         }
+           
         
          Util.habilitar(false, jTxtId, jTxtSobre,jTxtCep,jFmtCadastro ,jFmtnasc,jFmtTelefone,jCboEstado ,jCboGenero ,jTxtNome,
              jTxtEmail, jTxtCidade, jTxtprof, jTxtRenda ,jTxtnumero , jBtnCancelar, jBtnComfirmar, jTxtendereco);

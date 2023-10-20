@@ -8,6 +8,7 @@ package view;
 import bean.RsVenda;
 import dao.VendaDAO;
 import dao.VendedorDAO;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.util.List;
 import tools.Util;
 import viewControle.VendaController;
@@ -31,6 +32,9 @@ boolean incluindo;
     public JDlgvendaIA(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("venda");
+        setLocationRelativeTo(null);
+
     }
 
     /**

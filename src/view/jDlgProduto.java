@@ -5,16 +5,13 @@
  */
 package view;
 
-import bean.RsCliente;
 import bean.RsProduto;
-import dao.ClienteDAO;
 import dao.ProdutoDAO;
+import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import javax.swing.JFrame;
 import tools.Util;
-import static tools.Util.habilitar;
 import viewPesquisa.JDlgClienteP;
-import viewPesquisa.JDlgVendedorP;
 
 /**
  *
@@ -30,10 +27,16 @@ public class JDlgProduto extends javax.swing.JPanel {
     public JDlgProduto() {
         initComponents();
         jDlgProduto = new JDlgProduto();
+       
     }
+
 
     JDlgProduto(JFrame jFrame, boolean b) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private JDlgProduto(Frame parent, boolean modal) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         public RsProduto viewBean() {
         RsProduto produto = new RsProduto();
@@ -264,7 +267,7 @@ public class JDlgProduto extends javax.swing.JPanel {
         produtoDAO.insert(produto);
         }else{
            RsProduto produto = viewBean(); 
-        ProdutoDAO produtoDAO = new ProdutoDAO();;
+        ProdutoDAO produtoDAO = new ProdutoDAO();
         produtoDAO.update(produto);
         }
         
@@ -332,17 +335,15 @@ public class JDlgProduto extends javax.swing.JPanel {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JDlgProduto dialog = new JDlgProduto(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            JDlgProduto dialog = new JDlgProduto(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 

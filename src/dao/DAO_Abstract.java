@@ -14,11 +14,11 @@ import org.hibernate.SessionFactory;
  * @author u03402615100
  */
 public abstract class DAO_Abstract {
-    public Session session;
+      public Session session;
     
     public DAO_Abstract(){
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        session = sessionFactory.openSession();
+    SessionFactory sessionfactory = HibernateUtil.getSessionFactory();
+    session = sessionfactory.openSession();
     }
     
     public abstract  void insert(Object object);

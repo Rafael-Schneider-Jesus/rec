@@ -19,19 +19,9 @@ import org.hibernate.criterion.Restrictions;
  * @author u08649973108
  */
 public class VendaProdutoDAO extends DAO_Abstract{
-        private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://10.7.0.51:33062/db_rafael_schneider";
-    private static final String USER = "rafael_schneider";
-    private static final String PASS = "rafael_schneider";
+public VendaProdutoDAO(){
     
-    public static Connection getConnection(){
-        try {
-            Class.forName(DRIVER);
-            return DriverManager.getConnection(URL, USER, PASS);
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new RuntimeException("Erro conexao: ",ex);
-        }
-    }
+}
 
 @Override
     public void insert(Object object) {
