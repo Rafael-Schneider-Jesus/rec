@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/10/2023 17:25:26 by Hibernate Tools 4.3.1
+// Generated 30/11/2023 17:41:52 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -56,7 +56,7 @@ public class RsUsuarios  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_Nome", nullable=false, length=65)
+    @Column(name="rs_Nome", nullable=false, length=100)
     public String getRsNome() {
         return this.rsNome;
     }
@@ -76,7 +76,7 @@ public class RsUsuarios  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_Senha", nullable=false, length=45)
+    @Column(name="rs_Senha", nullable=false, length=100)
     public String getRsSenha() {
         return this.rsSenha;
     }
@@ -86,7 +86,7 @@ public class RsUsuarios  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_Apelido", nullable=false, length=45)
+    @Column(name="rs_Apelido", nullable=false, length=100)
     public String getRsApelido() {
         return this.rsApelido;
     }

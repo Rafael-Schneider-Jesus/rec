@@ -1,10 +1,14 @@
 package bean;
-// Generated 20/10/2023 17:25:26 by Hibernate Tools 4.3.1
+// Generated 30/11/2023 17:41:52 by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,15 +25,24 @@ public class RsProduto  implements java.io.Serializable {
      private String rsSabor;
      private int rsCopoOuCasquinha;
      private int rsTamanho;
+     private Set rsVendaProdutos = new HashSet(0);
 
     public RsProduto() {
     }
 
+	
     public RsProduto(int rsIdProduto, String rsSabor, int rsCopoOuCasquinha, int rsTamanho) {
+        this.rsIdProduto = rsIdProduto;
+        this.rsSabor = rsSabor;
+        this.rsCopoOuCasquinha = rsCopoOuCasquinha;
+        this.rsTamanho = rsTamanho;
+    }
+    public RsProduto(int rsIdProduto, String rsSabor, int rsCopoOuCasquinha, int rsTamanho, Set rsVendaProdutos) {
        this.rsIdProduto = rsIdProduto;
        this.rsSabor = rsSabor;
        this.rsCopoOuCasquinha = rsCopoOuCasquinha;
        this.rsTamanho = rsTamanho;
+       this.rsVendaProdutos = rsVendaProdutos;
     }
    
      @Id 
@@ -45,7 +58,7 @@ public class RsProduto  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_sabor", nullable=false, length=45)
+    @Column(name="rs_sabor", nullable=false, length=100)
     public String getRsSabor() {
         return this.rsSabor;
     }
@@ -72,6 +85,15 @@ public class RsProduto  implements java.io.Serializable {
     
     public void setRsTamanho(int rsTamanho) {
         this.rsTamanho = rsTamanho;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="rsProduto")
+    public Set getRsVendaProdutos() {
+        return this.rsVendaProdutos;
+    }
+    
+    public void setRsVendaProdutos(Set rsVendaProdutos) {
+        this.rsVendaProdutos = rsVendaProdutos;
     }
 
 

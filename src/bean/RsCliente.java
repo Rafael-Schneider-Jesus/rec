@@ -1,11 +1,15 @@
 package bean;
-// Generated 20/10/2023 17:25:26 by Hibernate Tools 4.3.1
+// Generated 30/11/2023 17:41:52 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,14 +36,33 @@ public class RsCliente  implements java.io.Serializable {
      private int rsGenero;
      private String rsProfissao;
      private int rsEstadoCivil;
-     private String rsNumeroDependentes;
+     private int rsNumeroDependentes;
      private int rsRendaAnual;
      private Date rsDataCadastro;
+     private Set rsVendas = new HashSet(0);
 
     public RsCliente() {
     }
 
-    public RsCliente(int rsIdcliente, String rsNome, String rsSobrenome, String rsEmail, String rsTelefone, String rsEndereco, String rsCidade, String rsCep, Date rsDataNascimento, int rsGenero, String rsProfissao, int rsEstadoCivil, String rsNumeroDependentes, int rsRendaAnual, Date rsDataCadastro) {
+	
+    public RsCliente(int rsIdcliente, String rsNome, String rsSobrenome, String rsEmail, String rsTelefone, String rsEndereco, String rsCidade, String rsCep, Date rsDataNascimento, int rsGenero, String rsProfissao, int rsEstadoCivil, int rsNumeroDependentes, int rsRendaAnual, Date rsDataCadastro) {
+        this.rsIdcliente = rsIdcliente;
+        this.rsNome = rsNome;
+        this.rsSobrenome = rsSobrenome;
+        this.rsEmail = rsEmail;
+        this.rsTelefone = rsTelefone;
+        this.rsEndereco = rsEndereco;
+        this.rsCidade = rsCidade;
+        this.rsCep = rsCep;
+        this.rsDataNascimento = rsDataNascimento;
+        this.rsGenero = rsGenero;
+        this.rsProfissao = rsProfissao;
+        this.rsEstadoCivil = rsEstadoCivil;
+        this.rsNumeroDependentes = rsNumeroDependentes;
+        this.rsRendaAnual = rsRendaAnual;
+        this.rsDataCadastro = rsDataCadastro;
+    }
+    public RsCliente(int rsIdcliente, String rsNome, String rsSobrenome, String rsEmail, String rsTelefone, String rsEndereco, String rsCidade, String rsCep, Date rsDataNascimento, int rsGenero, String rsProfissao, int rsEstadoCivil, int rsNumeroDependentes, int rsRendaAnual, Date rsDataCadastro, Set rsVendas) {
        this.rsIdcliente = rsIdcliente;
        this.rsNome = rsNome;
        this.rsSobrenome = rsSobrenome;
@@ -55,6 +78,7 @@ public class RsCliente  implements java.io.Serializable {
        this.rsNumeroDependentes = rsNumeroDependentes;
        this.rsRendaAnual = rsRendaAnual;
        this.rsDataCadastro = rsDataCadastro;
+       this.rsVendas = rsVendas;
     }
    
      @Id 
@@ -100,7 +124,7 @@ public class RsCliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_telefone", nullable=false, length=9)
+    @Column(name="rs_telefone", nullable=false, length=15)
     public String getRsTelefone() {
         return this.rsTelefone;
     }
@@ -110,7 +134,7 @@ public class RsCliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_endereco", nullable=false, length=45)
+    @Column(name="rs_endereco", nullable=false, length=100)
     public String getRsEndereco() {
         return this.rsEndereco;
     }
@@ -120,7 +144,7 @@ public class RsCliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_cidade", nullable=false, length=45)
+    @Column(name="rs_cidade", nullable=false, length=100)
     public String getRsCidade() {
         return this.rsCidade;
     }
@@ -130,7 +154,7 @@ public class RsCliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_cep", nullable=false, length=45)
+    @Column(name="rs_cep", nullable=false, length=20)
     public String getRsCep() {
         return this.rsCep;
     }
@@ -160,7 +184,7 @@ public class RsCliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_profissao", nullable=false, length=45)
+    @Column(name="rs_profissao", nullable=false, length=100)
     public String getRsProfissao() {
         return this.rsProfissao;
     }
@@ -180,12 +204,12 @@ public class RsCliente  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_numero_dependentes", nullable=false, length=45)
-    public String getRsNumeroDependentes() {
+    @Column(name="rs_numero_dependentes", nullable=false)
+    public int getRsNumeroDependentes() {
         return this.rsNumeroDependentes;
     }
     
-    public void setRsNumeroDependentes(String rsNumeroDependentes) {
+    public void setRsNumeroDependentes(int rsNumeroDependentes) {
         this.rsNumeroDependentes = rsNumeroDependentes;
     }
 
@@ -207,6 +231,15 @@ public class RsCliente  implements java.io.Serializable {
     
     public void setRsDataCadastro(Date rsDataCadastro) {
         this.rsDataCadastro = rsDataCadastro;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="rsCliente")
+    public Set getRsVendas() {
+        return this.rsVendas;
+    }
+    
+    public void setRsVendas(Set rsVendas) {
+        this.rsVendas = rsVendas;
     }
 
 

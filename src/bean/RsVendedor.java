@@ -1,11 +1,15 @@
 package bean;
-// Generated 20/10/2023 17:25:26 by Hibernate Tools 4.3.1
+// Generated 30/11/2023 17:41:52 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,11 +32,23 @@ public class RsVendedor  implements java.io.Serializable {
      private String rsTelefone;
      private String rsLogin;
      private int rsFuncao;
+     private Set rsVendas = new HashSet(0);
 
     public RsVendedor() {
     }
 
+	
     public RsVendedor(int rsIdvendedor, String rsNome, String rsSobrenome, String rsCpf, Date rsDataNascimento, String rsTelefone, String rsLogin, int rsFuncao) {
+        this.rsIdvendedor = rsIdvendedor;
+        this.rsNome = rsNome;
+        this.rsSobrenome = rsSobrenome;
+        this.rsCpf = rsCpf;
+        this.rsDataNascimento = rsDataNascimento;
+        this.rsTelefone = rsTelefone;
+        this.rsLogin = rsLogin;
+        this.rsFuncao = rsFuncao;
+    }
+    public RsVendedor(int rsIdvendedor, String rsNome, String rsSobrenome, String rsCpf, Date rsDataNascimento, String rsTelefone, String rsLogin, int rsFuncao, Set rsVendas) {
        this.rsIdvendedor = rsIdvendedor;
        this.rsNome = rsNome;
        this.rsSobrenome = rsSobrenome;
@@ -41,6 +57,7 @@ public class RsVendedor  implements java.io.Serializable {
        this.rsTelefone = rsTelefone;
        this.rsLogin = rsLogin;
        this.rsFuncao = rsFuncao;
+       this.rsVendas = rsVendas;
     }
    
      @Id 
@@ -56,7 +73,7 @@ public class RsVendedor  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_nome", nullable=false, length=45)
+    @Column(name="rs_nome", nullable=false, length=100)
     public String getRsNome() {
         return this.rsNome;
     }
@@ -66,7 +83,7 @@ public class RsVendedor  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_sobrenome", nullable=false, length=45)
+    @Column(name="rs_sobrenome", nullable=false, length=100)
     public String getRsSobrenome() {
         return this.rsSobrenome;
     }
@@ -76,7 +93,7 @@ public class RsVendedor  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_cpf", nullable=false, length=11)
+    @Column(name="rs_cpf", nullable=false, length=15)
     public String getRsCpf() {
         return this.rsCpf;
     }
@@ -96,7 +113,7 @@ public class RsVendedor  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_telefone", nullable=false, length=9)
+    @Column(name="rs_telefone", nullable=false, length=15)
     public String getRsTelefone() {
         return this.rsTelefone;
     }
@@ -106,7 +123,7 @@ public class RsVendedor  implements java.io.Serializable {
     }
 
     
-    @Column(name="rs_login", nullable=false, length=45)
+    @Column(name="rs_login", nullable=false, length=100)
     public String getRsLogin() {
         return this.rsLogin;
     }
@@ -123,6 +140,15 @@ public class RsVendedor  implements java.io.Serializable {
     
     public void setRsFuncao(int rsFuncao) {
         this.rsFuncao = rsFuncao;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="rsVendedor")
+    public Set getRsVendas() {
+        return this.rsVendas;
+    }
+    
+    public void setRsVendas(Set rsVendas) {
+        this.rsVendas = rsVendas;
     }
 
 

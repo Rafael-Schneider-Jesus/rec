@@ -31,7 +31,7 @@ public class JDlgProduto extends javax.swing.JPanel {
     }
 
 
-    JDlgProduto(JFrame jFrame, boolean b) {
+   JDlgProduto(JFrame jFrame, boolean b) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

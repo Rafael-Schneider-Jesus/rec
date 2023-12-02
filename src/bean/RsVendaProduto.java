@@ -1,10 +1,13 @@
 package bean;
-// Generated 20/10/2023 17:25:26 by Hibernate Tools 4.3.1
+// Generated 30/11/2023 17:41:52 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,12 +21,16 @@ public class RsVendaProduto  implements java.io.Serializable {
 
 
      private int rsIdvendaProduto;
+     private RsProduto rsProduto;
+     private RsVenda rsVenda;
 
     public RsVendaProduto() {
     }
 
-    public RsVendaProduto(int rsIdvendaProduto) {
+    public RsVendaProduto(int rsIdvendaProduto, RsProduto rsProduto, RsVenda rsVenda) {
        this.rsIdvendaProduto = rsIdvendaProduto;
+       this.rsProduto = rsProduto;
+       this.rsVenda = rsVenda;
     }
    
      @Id 
@@ -36,6 +43,26 @@ public class RsVendaProduto  implements java.io.Serializable {
     
     public void setRsIdvendaProduto(int rsIdvendaProduto) {
         this.rsIdvendaProduto = rsIdvendaProduto;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="rs_idProduto", nullable=false)
+    public RsProduto getRsProduto() {
+        return this.rsProduto;
+    }
+    
+    public void setRsProduto(RsProduto rsProduto) {
+        this.rsProduto = rsProduto;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="rs_idvenda", nullable=false)
+    public RsVenda getRsVenda() {
+        return this.rsVenda;
+    }
+    
+    public void setRsVenda(RsVenda rsVenda) {
+        this.rsVenda = rsVenda;
     }
 
 
