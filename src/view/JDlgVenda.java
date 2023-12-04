@@ -6,18 +6,19 @@
 package view;
 
 import bean.RsCliente;
-import bean.RsProduto;
 import bean.RsVenda;
 import bean.RsVendedor;
 import dao.ClienteDAO;
-import dao.ProdutoDAO;
 import dao.VendaDAO;
 import dao.VendaProdutoDAO;
 import dao.VendedorDAO;
+import viewPesquisa.JDlgVendaProP;
+import viewControle.VendaProdutoController;
 import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
@@ -34,14 +35,14 @@ public class JDlgVenda extends javax.swing.JDialog {
     MaskFormatter mascaraData;
     
     VendaProdutoDAO pedidosProdutosDAO;
-   // PedidosProdutosControle pedidosProdutosControle;
+    VendaProdutoController vendaProdutoController;
   //  JDlgPedidosProdutosIA jDlgPedidosProdutosIA;
     /**
 k     */
     public JDlgVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pedidos");
+        setTitle("Venda");
         setLocationRelativeTo(null);
         
    //     jDlgPedidosProdutosIA = new JDlgPedidosProdutosIA(null, true);
@@ -50,20 +51,20 @@ k     */
         pedidosProdutosDAO = new VendaProdutoDAO();
         
         List lista = pedidosProdutosDAO.listAll();
-        pedidosProdutosControle.setList(lista);
-        jTable1.setModel(pedidosProdutosControle);
+        vendaProdutoController.setList(lista);
+        jTable1.setModel(vendaProdutoController);
 
         
         VendedorDAO vendedorDAO = new VendedorDAO();
         List listaVendedor = vendedorDAO.listAll();
         for (int i = 0; i < listaVendedor.size(); i++) {
-            jCboVendedor.addItem((RsVendedor) listaVendedor.get(i));            
+          //  jCboVendedor.addItem((RsVendedor) listaVendedor.get(i));            
         }
         
         ClienteDAO clienteDAO = new ClienteDAO();
         List listaCliente = clienteDAO.listAll();
         for (int i = 0; i < listaCliente.size(); i++) {
-            jCboCliente.addItem((RsCliente) listaCliente.get(i));            
+       //     jCboCliente.addItem((RsCliente) listaCliente.get(i));            
         }
         
         Util.habilitar(false, jTxtCodigo, jTxtTotal, jCboCliente, jCboVendedor, jFmtData, jBtnCancelar, jBtnConfirmar);
@@ -83,21 +84,21 @@ k     */
         RsVenda venda = new RsVenda(); // criou o bean
         
         venda.setRsIdvenda(Util.strInt(jTxtCodigo.getText()));
-        venda.setRs((RsCliente) jCboCliente.getSelectedItem());
-        venda.setVendedor((RsVendedor) jCboVendedor.getSelectedItem());
-        venda.setData(Util.strData(jFmtData.getText()));        
-        venda.setTotal(Util.strDouble(jTxtTotal.getText()));
+        venda.setRsCliente((RsCliente) jCboCliente.getSelectedItem());
+        venda.setRsVendedor((RsVendedor) jCboVendedor.getSelectedItem());
+        venda.setRsDataVenda((Util.strData(jFmtData.getText())));        
+        //venda.setRsTotal(Util.intStr(jTxtTotal.getText()));
 
         return venda;
     }
     
     public void beanView(RsVenda venda) {
         
-        jTxtCodigo.setText(Util.intStr(venda.getIdpedidos()));
-        jCboCliente.setSelectedItem(venda.getClientes());
-        jCboVendedor.setSelectedItem(venda.getVendedor());
-        jFmtData.setText(Util.dateStr(venda.getData()));    
-        jTxtTotal.setText(Util.doubleStr(venda.getTotal()));
+        jTxtCodigo.setText(Util.intStr(venda.getRsIdvenda()));
+        jCboCliente.setSelectedItem(venda.getRsCliente());
+        jCboVendedor.setSelectedItem(venda.getRsVendedor());
+  //      jFmtData.setText(Util.dataStr(venda.getRsDataVenda()));    
+      //  jTxtTotal.setText(Util.doubleStr(venda.getTotal()));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,9 +119,9 @@ k     */
         jTxtCodigo = new javax.swing.JTextField();
         jFmtData = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
-        jCboCliente = new javax.swing.JComboBox<Clientes>();
+        jCboCliente = new javax.swing.JComboBox<RsClientes>();
         jLabel3 = new javax.swing.JLabel();
-        jCboVendedor = new javax.swing.JComboBox<Vendedor>();
+        jCboVendedor = new javax.swing.JComboBox<RsVendedor>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTxtTotal = new javax.swing.JTextField();
@@ -363,7 +364,7 @@ k     */
         
         Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         
-        Util.limparCampos(jTxtCodigo, jTxtTotal,
+        Util.limp(jTxtCodigo, jTxtTotal,
                 jCboCliente, jCboVendedor, jFmtData);
         
         incluindo = true;
@@ -389,7 +390,7 @@ k     */
         } else {
             Util.msg("Exclusão cancelada com sucesso");
         }      
-          Util.limparCampos(jTxtCodigo, jTxtTotal,
+          Util.limp(jTxtCodigo, jTxtTotal,
                 jCboCliente, jCboVendedor, jFmtData);
                                     
     }//GEN-LAST:event_jBtnExcluirActionPerformed
@@ -402,7 +403,7 @@ k     */
         
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
          
-         Util.limparCampos(jTxtCodigo, jTxtTotal,
+         Util.limp(jTxtCodigo, jTxtTotal,
                 jCboCliente, jCboVendedor, jFmtData);
 
         Util.msg("Operação Cancelada");
@@ -410,9 +411,9 @@ k     */
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
        // TODO add your handling code here:
-       JDLgPedidosPesquisar jDLgPedidosPesquisar = new JDLgPedidosPesquisar(null, true);
-       jDLgPedidosPesquisar.setTelaAnterior(this);
-       jDLgPedidosPesquisar.setVisible(true);
+       JDlgVendaProP jDLgVendaProP = new JDlgVendaProP(null, true);
+  //     jDLgVendaProP.setTelaAnterior(this);
+       jDLgVendaProP.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed
@@ -442,17 +443,14 @@ k     */
             Util.msg("Nehnuma linha selecionada");
         } else {
             if (Util.perguntar("confirmar exclusão do produto?") == true) {
-                pedidosProdutosControle.removeBean(linha);
+         //       vendaProdutoController.removeBean(linha);
             }
         }
     }//GEN-LAST:event_jBtnExcluir1ActionPerformed
 
     private void jBtnIncluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir1ActionPerformed
        // TODO add your handling code here:
-       jDlgPedidosProdutosIA.setTitle("Incluir");
-       jDlgPedidosProdutosIA.setVisible(true);
-       List lista = pedidosProdutosDAO.listAll();
-       pedidosProdutosControle.setList(lista);
+
     }//GEN-LAST:event_jBtnIncluir1ActionPerformed
 
     private void jFmtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataActionPerformed
@@ -476,7 +474,7 @@ k     */
 
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
 
-        Util.limparCampos(jTxtCodigo, jTxtTotal,
+        Util.limp(jTxtCodigo, jTxtTotal,
             jCboCliente, jCboVendedor, jFmtData);
 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
@@ -533,8 +531,8 @@ k     */
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnIncluir1;
     private javax.swing.JButton jBtnPesquisar;
-    private javax.swing.JComboBox<Clientes> jCboCliente;
-    private javax.swing.JComboBox<Vendedor> jCboVendedor;
+    private javax.swing.JComboBox<RsCliente> jCboCliente;
+    private javax.swing.JComboBox<RsVendedor> jCboVendedor;
     private javax.swing.JFormattedTextField jFmtData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -546,4 +544,10 @@ k     */
     private javax.swing.JTextField jTxtCodigo;
     private javax.swing.JTextField jTxtTotal;
     // End of variables declaration//GEN-END:variables
+
+    private static class RsClientes {
+
+        public RsClientes() {
+        }
+    }
 }
